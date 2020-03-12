@@ -1,0 +1,16 @@
+.list-container {
+  margin: 0 auto;
+  width: 450px;
+  background: linear-gradient(to right top, #008793, #8ce5b7, #a8eb12);
+  padding: 0 15px;
+}
+
+.list-container .list-content {
+  background: #fbfef9;
+  padding: 10px;
+  text-align: center;
+}
+
+.list-container .list-content h4 {
+  color: #008793;
+}
