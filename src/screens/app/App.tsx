@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import configureStore from '../../store';
 import PockemonsScreen from '../pockemons';
+import PokemonDetails from '../pockemons/details/pokemon.details';
 
 const store = configureStore();
 
@@ -17,9 +18,11 @@ const App: FunctionComponent = () => {
           <Route exact path="/">
             <PockemonsScreen />
           </Route>
-          <Route path="/details">
-            <div>details</div>
-          </Route>
+          <Route
+            exact
+            path="/details/:pokemonId"
+            children={<PokemonDetails />}
+          />
         </Switch>
       </Router>
     </Provider>

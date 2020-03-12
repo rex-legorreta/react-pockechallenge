@@ -11,6 +11,21 @@
   text-align: center;
 }
 
-.list-container .list-content h4 {
+.list-container .list-content h4,
+.list-container .list-content span {
   color: #008793;
+}
+
+.list-container .pagination {
+  margin: auto;
+}
+
+.list-container .list-content span {
+  padding: 0 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.list-content span img {
+  vertical-align: sub;
 }

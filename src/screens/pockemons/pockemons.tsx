@@ -18,7 +18,7 @@ interface OwnProps {}
 interface StateProps {
   pockemons: Pockemon[];
   nextPageUrl?: string;
-  previousPageurl?: string;
+  previousPageUrl?: string;
 }
 
 type Props = StateProps & OwnProps & DispatchProps;
@@ -28,21 +28,35 @@ class PockemonsScreen extends PureComponent<Props> {
     this.props.getPockemons();
   }
 
-  public componentWillReceiveProps(newProps: Props) {
-    console.log("zzzzzz", newProps);
-  }
-
   public render() {
     return (
       <div className="pokemon-container">
-        <PockemonList pokemons={this.props.pockemons} />
+        <PockemonList
+          pokemons={this.props.pockemons}
+          goNextPage={this.props.nextPageUrl ? this.goNextPage : undefined}
+          goPreviousPage={
+            this.props.previousPageUrl ? this.goPreviousPage : undefined
+          }
+        />
       </div>
     );
   }
+
+  goNextPage = () => {
+    const { getPockemons, nextPageUrl } = this.props;
+    getPockemons(nextPageUrl);
+  };
+
+  goPreviousPage = () => {
+    const { getPockemons, previousPageUrl } = this.props;
+    getPockemons(previousPageUrl);
+  };
 }
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps): StateProps => ({
-  pockemons: state.pockemons.pockemonsData.results
+  pockemons: state.pockemons.pockemonsData.results,
+  nextPageUrl: state.pockemons.pockemonsData.next,
+  previousPageUrl: state.pockemons.pockemonsData.previous
 });
 
 const mapDispatchToProps = (
